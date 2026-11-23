@@ -45,10 +45,8 @@ export class ApiBase{
 
     post<T = any>(path: string, json?: Json){return this.request<T>('POST',path, json)}
 
-    
     put<T = any>(path: string, json?: Json){return this.request<T>('PUT',path, json)}
 
     delete<T = any>(path: string, json?: Json){return this.request<T>('DELETE',path, json)}
-
 
 }
