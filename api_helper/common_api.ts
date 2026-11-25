@@ -28,7 +28,7 @@ export class ApiBase{
         if(this.token ) headers['Autorization' ] = `Bearer ${this.token}`
         if(json !== undefined) headers['Content-Type'] = 'application/json'
 
-        const response = await fetch(`${this.baseUrl} ${path}`,{
+        const response = await fetch(`${this.baseUrl}${path}`,{
              method,
              headers,
              body: json !== undefined ? JSON.stringify(json) : undefined,

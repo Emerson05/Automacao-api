@@ -29,27 +29,24 @@ export class KathflixApi extends ApiBase {
     return this.post('/api/test/reset')
   }
 
-  // Cria um usuário comum e devolve um email, O email começa com o prefixo, para o cleanup achar depois.
-  async criarUsuario(prefixo: string, password: string, extra: Json = {}): Promise<string> {
-    const email = `${prefixo}user@kathflix.com `
-    await this.post('/api/test/seed', {
-      users: [{
-        name: 'Usuário Automacao', 
-        email: '',
-        password,
-        role: 'user',
-        ...extra
 
-      }]
-    } )
-
-    return email;
-
-  }
+async criarUsuario(prefixo: string, password: string, extra: Json = {}): Promise<string> {
+  const email = `${prefixo}user@kathflix.com`; 
+  await this.post('/api/test/seed', {
+    users: [{
+      name: 'Usuário Automacao', 
+      email, 
+      password,
+      role: 'user',
+      ...extra
+    }]
+  });
+  return email;
+}
 
   // Remove usuários que começam com o prefixo.
   limparPorPrefixo(prefixo: string){
-    return  this.delete('/api/test/cleanup', {prefix: prefixo})
+    return this.delete('/api/test/cleanup',{prefix: prefixo})
   }
 }
 
